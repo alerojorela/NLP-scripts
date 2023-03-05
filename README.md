@@ -10,10 +10,18 @@ Segmentation into
 + spanish syllables
 + word tokens
 
+Texts content comparison
+
++ literal
+
 Semantics
 
 + Apriori algorithm on sentences for word correlation
 + Relevant terms extraction (tf·idf)
+
+Tools:
+
++ graph visualization with Pyvis library
 
 
 

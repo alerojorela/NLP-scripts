@@ -2,7 +2,6 @@ from time import time
 from pathlib import Path
 
 
-
 class Transcriber():
     def transcribe(self):
         pass
@@ -16,10 +15,10 @@ class Wave2vecTranscriber(Transcriber):
 
         from asrecognition import ASREngine
         language_models = {
+            'en': 'facebook/wav2vec2-base',
             'es': "jonatasgrosman/wav2vec2-large-xlsr-53-spanish",
-            'en': 'facebook/wav2vec2-base'
         }
-        assert language in language_models, f'There is model currently associated with the language {language}. Plesae, modify the code'
+        assert self.language in language_models, f'There is model currently associated with the language {self.language}. Plesae, modify the code'
         self.tr = ASREngine(self.language, model_path=language_models[self.language])
 
     # @decorator_timer
