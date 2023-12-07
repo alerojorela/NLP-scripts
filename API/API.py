@@ -163,6 +163,7 @@ start_time = time.time()
 nlp_model = {}
 # nlp_model["es"] = spacy.load("es_core_news_lg")  # has vector info
 nlp_model["es"] = spacy.load("es_dep_news_trf")  # no vector info, no entities
+nlp_model["en"] = spacy.load("en_core_web_trf")  # no vector info
 execution_time = (time.time() - start_time)
 print(f'Spacy loading took {str(execution_time)} seconds\n')
 
@@ -206,7 +207,7 @@ def ask_llama(prompt: str):
     return result
 
 @app.get("/query")
-def parse(task:str):
+def query(task:str):
     sys_msg = "You are a helpful research assistant. You are brief and get straight to the point"
     prompt = f"""[INST] <<SYS>>{sys_msg}<</SYS>> {task} [/INST]"""
     result = ask_llama(prompt)
@@ -214,7 +215,11 @@ def parse(task:str):
 
 
 @app.get("/translate")
-def parse(text:str=default_text, language: str = "english"):
+def translate(text:str=default_text, language: str = "english"):
+    """
+    - source text
+    - target language
+    """
     sys_msg = "You are a helpful research assistant. You are brief and get straight to the point"
     # task = f"Traduce al inglés el siguiente texto delimitado por triples comillas '''{text}'''"
     task = f"""Translate to {language} the following text delimited by triple quotes. Don't provide any information but the translation.
