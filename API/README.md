@@ -7,13 +7,16 @@ Current features:
 - Spacy:
   - morphological analysis
 - Llama 2 (requires huggingface key and model sign up):
-  - translation function
+  
+  - query function
+    - translation function
+  
   
   
 
 API routes at http://0.0.0.0:6003/docs
 
-### 
+
 
 ## Setup
 
@@ -31,7 +34,7 @@ For enable translation via llama 2:
    >
    > - CPU option is not implemented
 
-### Option 1. Create virtual environment and activate it (recommended)
+### Option 1. Create virtual environment and activate it
 
 ```bash
 python -m venv venv
@@ -52,9 +55,9 @@ uvicorn API:app --host 0.0.0.0 --port 6003
 
 Test available API routes at http://0.0.0.0:6003/docs
 
-### Option 2. Create a docker image based on `Dockerfile` file and run a container
+### Option 2. Create a docker container
 
-1. Create volume and image
+1. Create volume and image based on `Dockerfile`
 
 ```bash
 # Path to this folder
